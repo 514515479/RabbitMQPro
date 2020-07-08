@@ -1,4 +1,4 @@
-package work;
+package publishSubscribe;
 
 import com.rabbitmq.client.*;
 import utils.ConnectUtil;
@@ -17,8 +17,12 @@ public class Consumer1 {
         Connection connection = ConnectUtil.getConnection();
         //创建通道
         Channel channel = connection.createChannel();
+        //创建交换机
+        channel.exchangeDeclare(ConnectUtil.FANOUT_EXCHAGE, BuiltinExchangeType.FANOUT);
         //创建队列
-        channel.queueDeclare(ConnectUtil.WORK_QUEUES, true, false, false, null);
+        channel.queueDeclare(ConnectUtil.FANOUT_QUEUES_1, true, false, false, null);
+        //队列绑定交换机
+        channel.queueBind(ConnectUtil.FANOUT_QUEUES_1, ConnectUtil.FANOUT_EXCHAGE, "");
         //监听消息
         DefaultConsumer consumer = new DefaultConsumer(channel) {
             /**
@@ -48,7 +52,7 @@ public class Consumer1 {
          * 参数一：队列名称
          * 参数二：是否自动确认，设置为true表示消息接收到自动向mq回复接收到了，mq接收到回复后会删除消息；设置为false则需要手动确认
          */
-        channel.basicConsume(ConnectUtil.WORK_QUEUES, true, consumer);
+        channel.basicConsume(ConnectUtil.FANOUT_QUEUES_1, true, consumer);
 
         //不关闭资源，应该一直监听消息
         //channel.close();

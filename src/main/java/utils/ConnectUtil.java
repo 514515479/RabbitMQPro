@@ -17,6 +17,17 @@ public class ConnectUtil {
     //work_queues工作模式队列
     public static final String WORK_QUEUES = "work_queue";
 
+    //交换机名称
+    public static final String FANOUT_EXCHAGE = "fanout_exchange";
+
+    //Publish/Subscribe发布与订阅模式队列
+    public static final String FANOUT_QUEUES_1 = "fanout_queue1";
+    public static final String FANOUT_QUEUES_2 = "fanout_queue2";
+
+
+
+
+
     public static Connection getConnection() throws Exception {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();

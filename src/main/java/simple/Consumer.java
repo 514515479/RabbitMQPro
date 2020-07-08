@@ -17,6 +17,7 @@ public class Consumer {
         Connection connection = ConnectUtil.getConnection();
         //创建通道
         Channel channel = connection.createChannel();
+        //创建队列
         channel.queueDeclare(ConnectUtil.SIMPLE_QUEUE, true, false, false, null);
         //监听消息
         DefaultConsumer consumer = new DefaultConsumer(channel) {

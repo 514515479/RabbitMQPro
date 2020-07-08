@@ -18,7 +18,7 @@ public class Producer {
         Channel channel = connection.createChannel();
         /**
          * 创建队列
-         * 参数一：队列名称
+         * 参数一：交换机名称，如果没有指定则使用默认Default Exchage
          * 参数二：是否定义持久化队列
          * 参数三：是否独占本次连接
          * 参数四：是否在不使用的时候自动删除队列
