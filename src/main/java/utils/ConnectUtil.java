@@ -31,17 +31,24 @@ public class ConnectUtil {
     //rounting模式队列
     public static final String DIRECT_QUEUE_UPDATE = "direct_queue_update";
 
+    //交换机名称（topics）
+    public static final String TOPIC_EXCHAGE = "topic_exchange";
+    //topics模式队列
+    public static final String TOPIC_QUEUE_1 = "topic_queue_1";
+    //topics模式队列
+    public static final String TOPIC_QUEUE_2 = "topic_queue_2";
+
     public static Connection getConnection() throws Exception {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //主机地址
-        connectionFactory.setHost("111.229.241.164");
+        connectionFactory.setHost("123");
         //端口
         connectionFactory.setPort(5672);
         //用户名
-        connectionFactory.setUsername("user");
+        connectionFactory.setUsername("123");
         //密码
-        connectionFactory.setPassword("nuttertools");
+        connectionFactory.setPassword("123");
          //创建连接
         return connectionFactory.newConnection();
     }
