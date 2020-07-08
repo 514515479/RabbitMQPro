@@ -1,4 +1,4 @@
-package simple;
+package utils;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -11,8 +11,11 @@ import com.rabbitmq.client.ConnectionFactory;
  **/
 public class ConnectUtil {
 
-    //队列名称
-    public static final String QUEUE_NAME = "simple_queue";
+    //简单队列
+    public static final String SIMPLE_QUEUE = "simple_queue";
+
+    //work_queues工作模式队列
+    public static final String WORK_QUEUES = "work_queue";
 
     public static Connection getConnection() throws Exception {
         //创建连接工厂

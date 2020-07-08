@@ -1,4 +1,4 @@
-package simple;
+package work;
 
 import com.rabbitmq.client.*;
 import utils.ConnectUtil;
@@ -11,13 +11,13 @@ import java.io.IOException;
  *
  * 消费者
  **/
-public class Consumer {
+public class Consumer2 {
     public static void main(String[] args) throws Exception{
         //创建连接
         Connection connection = ConnectUtil.getConnection();
         //创建通道
         Channel channel = connection.createChannel();
-        channel.queueDeclare(ConnectUtil.SIMPLE_QUEUE, true, false, false, null);
+        channel.queueDeclare(ConnectUtil.WORK_QUEUES, true, false, false, null);
         //监听消息
         DefaultConsumer consumer = new DefaultConsumer(channel) {
             /**
@@ -47,7 +47,7 @@ public class Consumer {
          * 参数一：队列名称
          * 参数二：是否自动确认，设置为true表示消息接收到自动向mq回复接收到了，mq接收到回复后会删除消息；设置为false则需要手动确认
          */
-        channel.basicConsume(ConnectUtil.SIMPLE_QUEUE, true, consumer);
+        channel.basicConsume(ConnectUtil.WORK_QUEUES, true, consumer);
 
         //不关闭资源，应该一直监听消息
         //channel.close();
